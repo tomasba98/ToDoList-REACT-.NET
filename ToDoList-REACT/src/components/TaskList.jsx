@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Grid, Typography, CircularProgress, Box } from "@mui/material";
 import { Task } from "./Task/Task";
@@ -8,19 +8,17 @@ const Tasks = () => {
   const [tasksArray, setTasksArray] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Función para agregar un nuevo task al array
   const addTask = (newTask) => {
     setTasksArray((prevTasks) => [...prevTasks, newTask]);
   };
 
-  // Función para eliminar una tarea del array y del servidor
   const onDelete = (taskId) => {
-    // Eliminar la tarea del array
+    //eliminacion array
     setTasksArray((prevTasks) =>
       prevTasks.filter((task) => task.id !== taskId)
     );
 
-    // Realizar la solicitud DELETE al endpoint correspondiente
+    //eliminacion server
     axios
       .delete(`https://localhost:44307/api/TaskLists/${taskId}`)
       .then((response) => {
@@ -32,7 +30,6 @@ const Tasks = () => {
   };
 
   const onUpdate = (updatedTask) => {
-    // Realizar la solicitud PUT al endpoint correspondiente
     axios
       .put(
         `https://localhost:44307/api/TaskLists/${updatedTask.id}`,
@@ -40,7 +37,6 @@ const Tasks = () => {
       )
       .then((response) => {
         console.log("Task updated successfully:", response);
-        // Actualizar el estado reemplazando la tarea antigua con la actualizada
         setTasksArray((prevTasks) =>
           prevTasks.map((task) =>
             task.id === updatedTask.id ? updatedTask : task
@@ -53,21 +49,18 @@ const Tasks = () => {
   };
 
   useEffect(() => {
-    // Realizar la solicitud GET cuando el componente se monta
     axios
       .get("https://localhost:44307/api/TaskLists")
       .then((response) => {
-        // Actualizar el estado con los datos recibidos
         setTasksArray(response.data);
       })
       .catch((error) => {
         console.error("Error fetching tasks:", error);
       })
       .finally(() => {
-        // Establecer loading en falso cuando la solicitud ha terminado, independientemente del resultado
         setLoading(false);
       });
-  }, []); // El array vacío como segundo argumento garantiza que la solicitud se realice solo una vez al montar el componente
+  }, []);
 
   return (
     <>
@@ -77,7 +70,6 @@ const Tasks = () => {
         </Grid>
 
         {loading ? (
-          // Muestra el spinner mientras loading es true
           <Grid
             item
             xs={12}
@@ -88,7 +80,6 @@ const Tasks = () => {
         ) : tasksArray.length > 0 ? (
           tasksArray.map((task) => (
             <Grid item xs={12} key={task.id}>
-              {/* Pasa la función onDelete como prop al componente Task */}
               <Task task={task} onDelete={onDelete} onUpdate={onUpdate} />
             </Grid>
           ))

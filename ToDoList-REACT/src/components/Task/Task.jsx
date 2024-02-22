@@ -7,26 +7,19 @@ export function Task({ task, onDelete, onUpdate }) {
   const [editedDescription, setEditedDescription] = useState(
     task.description || ""
   );
-  const [isVisible, setIsVisible] = useState(true);
 
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
   const handleSaveClick = () => {
-    // Aquí puedes agregar lógica para guardar los cambios
     onUpdate({ ...task, name: editedName, description: editedDescription });
     setIsEditing(false);
   };
 
   const handleDeleteClick = () => {
-    //setIsVisible(false);
-    onDelete(task.id); // Llama a la función onDelete pasando el ID de la tarea
+    onDelete(task.id);
   };
-
-  if (!isVisible) {
-    return null; // Si isVisible es false, el componente no se renderiza
-  }
 
   return (
     <Box
