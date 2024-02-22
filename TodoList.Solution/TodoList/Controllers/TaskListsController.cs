@@ -21,14 +21,14 @@ namespace TodoList.Controllers
             _context = context;
         }
 
-        // GET: api/TaskLists
+        // GET
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TaskList>>> GetTasksList()
         {
             return await _context.TasksList.ToListAsync();
         }
 
-        // GET: api/TaskLists/5
+        // GET ID
         [HttpGet("{id}")]
         public async Task<ActionResult<TaskList>> GetTaskList(int id)
         {
@@ -42,8 +42,7 @@ namespace TodoList.Controllers
             return taskList;
         }
 
-        // PUT: api/TaskLists/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // PUT
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTaskList(int id, TaskList taskList)
         {
@@ -73,8 +72,7 @@ namespace TodoList.Controllers
             return NoContent();
         }
 
-        // POST: api/TaskLists
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // POST
         [HttpPost]
         public async Task<ActionResult<TaskList>> PostTaskList(TaskList taskList)
         {
@@ -84,7 +82,7 @@ namespace TodoList.Controllers
             return CreatedAtAction("GetTaskList", new { id = taskList.Id }, taskList);
         }
 
-        // DELETE: api/TaskLists/5
+        // DELETE
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTaskList(int id)
         {
