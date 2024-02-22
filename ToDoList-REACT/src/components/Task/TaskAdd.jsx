@@ -2,6 +2,7 @@ import { Box, Button, Paper, TextField, Grid } from "@mui/material";
 import { useState } from "react";
 import * as yup from "yup";
 import axios from "axios";
+import { addTask } from "../../services/taskService";
 
 export function TaskAdd({ onTaskAdded }) {
   const [loading, setLoading] = useState(false);
@@ -48,7 +49,7 @@ export function TaskAdd({ onTaskAdded }) {
 
   const isValid = Object.values(errors).every((error) => error === "");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!isValid) {
@@ -58,27 +59,19 @@ export function TaskAdd({ onTaskAdded }) {
 
     setLoading(true);
 
-    const requestData = {
-      id: 0,
+    const taskData = {
       name: values.taskName,
       description: values.taskDescription,
     };
 
-    const url = "https://localhost:44307/api/TaskLists";
-
-    axios
-      .post(url, requestData)
-      .then((res) => {
-        console.log("Request successful:", res);
-        console.log("Tarea agregada con éxito");
-        onTaskAdded(res.data);
-      })
-      .catch((error) => {
-        console.error("Error in request:", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    try {
+      const addedTask = await addTask(taskData);
+      onTaskAdded(addedTask);
+    } catch (error) {
+      console.log("error on add task:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

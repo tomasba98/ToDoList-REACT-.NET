@@ -1,65 +1,60 @@
+// Tasks.js
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Grid, Typography, CircularProgress, Box } from "@mui/material";
 import { Task } from "./Task/Task";
 import { TaskAdd } from "./Task/TaskAdd";
+import {
+  addTask,
+  deleteTask,
+  updateTask,
+  fetchTasks,
+} from "../services/taskService";
 
 const Tasks = () => {
   const [tasksArray, setTasksArray] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const fetchTasksData = async () => {
+    try {
+      const tasks = await fetchTasks();
+      setTasksArray(tasks);
+    } catch (error) {
+      console.log("error on fetch task:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const addTask = (newTask) => {
     setTasksArray((prevTasks) => [...prevTasks, newTask]);
   };
 
-  const onDelete = (taskId) => {
-    //eliminacion array
-    setTasksArray((prevTasks) =>
-      prevTasks.filter((task) => task.id !== taskId)
-    );
-
-    //eliminacion server
-    axios
-      .delete(`https://localhost:44307/api/TaskLists/${taskId}`)
-      .then((response) => {
-        console.log("Task deleted successfully:", response);
-      })
-      .catch((error) => {
-        console.error("Error deleting task:", error);
-      });
+  const onDelete = async (taskId) => {
+    try {
+      await deleteTask(taskId);
+      setTasksArray((prevTasks) =>
+        prevTasks.filter((task) => task.id !== taskId)
+      );
+    } catch (error) {
+      console.log("error on delete task:", error);
+    }
   };
 
-  const onUpdate = (updatedTask) => {
-    axios
-      .put(
-        `https://localhost:44307/api/TaskLists/${updatedTask.id}`,
-        updatedTask
-      )
-      .then((response) => {
-        console.log("Task updated successfully:", response);
-        setTasksArray((prevTasks) =>
-          prevTasks.map((task) =>
-            task.id === updatedTask.id ? updatedTask : task
-          )
-        );
-      })
-      .catch((error) => {
-        console.error("Error updating task:", error);
-      });
+  const onUpdate = async (updatedTask) => {
+    try {
+      await updateTask(updatedTask);
+      setTasksArray((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === updatedTask.id ? updatedTask : task
+        )
+      );
+    } catch (error) {
+      console.log("error on update task:", error);
+    }
   };
 
   useEffect(() => {
-    axios
-      .get("https://localhost:44307/api/TaskLists")
-      .then((response) => {
-        setTasksArray(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching tasks:", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    fetchTasksData();
   }, []);
 
   return (
