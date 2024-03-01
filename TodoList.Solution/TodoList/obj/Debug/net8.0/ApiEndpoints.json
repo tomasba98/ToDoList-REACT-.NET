@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[TodoList.Models.TaskList, TodoList, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[TodoList.Models.TaskResponse, TodoList, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -28,14 +28,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "taskList",
-        "Type": "TodoList.Models.TaskList",
+        "Name": "taskRequest",
+        "Type": "TodoList.Models.TaskRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "TodoList.Models.TaskList",
+        "Type": "TodoList.Models.TaskResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -47,21 +47,26 @@
   },
   {
     "ContainingType": "TodoList.Controllers.TaskListsController",
-    "Method": "GetTaskList",
+    "Method": "GetTaskByIde",
     "RelativePath": "api/TaskLists/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "taskId",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "TodoList.Models.TaskList",
+        "Type": "TodoList.Models.TaskResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -74,19 +79,19 @@
   {
     "ContainingType": "TodoList.Controllers.TaskListsController",
     "Method": "PutTaskList",
-    "RelativePath": "api/TaskLists/{id}",
+    "RelativePath": "api/TaskLists/{taskId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "taskId",
         "Type": "System.Int32",
         "IsRequired": true
       },
       {
-        "Name": "taskList",
-        "Type": "TodoList.Models.TaskList",
+        "Name": "taskRequest",
+        "Type": "TodoList.Models.TaskRequest",
         "IsRequired": true
       }
     ],
@@ -95,13 +100,13 @@
   {
     "ContainingType": "TodoList.Controllers.TaskListsController",
     "Method": "DeleteTaskList",
-    "RelativePath": "api/TaskLists/{id}",
+    "RelativePath": "api/TaskLists/{taskId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "taskId",
         "Type": "System.Int32",
         "IsRequired": true
       }

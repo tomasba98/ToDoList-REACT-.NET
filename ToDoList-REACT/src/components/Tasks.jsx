@@ -17,7 +17,9 @@ const Tasks = () => {
   const fetchTasksData = async () => {
     try {
       const tasks = await fetchTasks();
-      setTasksArray(tasks);
+      // Sort tasks by ID in descending order
+      const sortedTasks = tasks.sort((a, b) => b.id - a.id);
+      setTasksArray(sortedTasks);
     } catch (error) {
       console.log("error on fetch task:", error);
     } finally {
@@ -26,7 +28,7 @@ const Tasks = () => {
   };
 
   const addTask = (newTask) => {
-    setTasksArray((prevTasks) => [...prevTasks, newTask]);
+    setTasksArray((prevTasks) => [newTask, ...prevTasks]);
   };
 
   const onDelete = async (taskId) => {

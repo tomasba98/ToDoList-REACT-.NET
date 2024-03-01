@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TodoList.Data;
+using TodoList.Entities;
 using TodoList.Models;
+using TodoList.Services.TaskList;
 
 namespace TodoList.Controllers
 {
@@ -14,93 +17,115 @@ namespace TodoList.Controllers
     [ApiController]
     public class TaskListsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly ITaskService _taskService;
 
-        public TaskListsController(AppDbContext context)
+        public TaskListsController(ITaskService taskService)
         {
-            _context = context;
+            _taskService = taskService;
+        }
+
+        private static TaskResponse TaskMapper (TaskEntity taskEntity)
+        {
+            return new TaskResponse()
+            {
+                Id = taskEntity.Id,
+                Description = taskEntity.Description,
+                Name = taskEntity.Name
+            };
+        }
+
+        private static TaskEntity CreateTask(TaskRequest taskRequest)
+        {
+            return new TaskEntity()
+            {
+                Description = taskRequest.Description,
+                Name = taskRequest.Name
+            };
         }
 
         // GET
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TaskList>>> GetTasksList()
+        public ActionResult<IEnumerable<TaskResponse>> GetTasksList()
         {
-            return await _context.TasksList.ToListAsync();
+            var tasks = _taskService.GetAllTasks();
+
+           IEnumerable<TaskResponse> result = tasks.Select(TaskMapper).ToList();
+
+            return Ok(result);
         }
 
         // GET ID
         [HttpGet("{id}")]
-        public async Task<ActionResult<TaskList>> GetTaskList(int id)
+        public ActionResult<TaskResponse> GetTaskByIde(int taskId)
         {
-            var taskList = await _context.TasksList.FindAsync(id);
-
-            if (taskList == null)
-            {
-                return NotFound();
-            }
-
-            return taskList;
-        }
-
-        // PUT
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTaskList(int id, TaskList taskList)
-        {
-            if (id != taskList.Id)
+            var task = _taskService.GetTaskById(taskId);
+            
+            if (task == null)
             {
                 return BadRequest();
             }
 
-            _context.Entry(taskList).State = EntityState.Modified;
+            return Ok(TaskMapper(task));
+        }
 
-            try
+        
+        // PUT
+        [HttpPut("{taskId}")]
+        public async Task<IActionResult> PutTaskList(int taskId, TaskRequest taskRequest)
+        {
+            var task = _taskService.GetTaskById(taskId);
+
+            if (task == null)
             {
-                await _context.SaveChangesAsync();
+                return BadRequest();
             }
-            catch (DbUpdateConcurrencyException)
+            
+            task.Name = taskRequest.Name;
+            task.Description = taskRequest.Description;
+
+            bool result = await _taskService.UpdateTask(task);
+
+            if (!result)
             {
-                if (!TaskListExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest();
             }
 
-            return NoContent();
+            return Ok();
         }
 
         // POST
         [HttpPost]
-        public async Task<ActionResult<TaskList>> PostTaskList(TaskList taskList)
+        public ActionResult<TaskResponse> PostTaskList(TaskRequest taskRequest)
         {
-            _context.TasksList.Add(taskList);
-            await _context.SaveChangesAsync();
+            var task = CreateTask(taskRequest);
 
-            return CreatedAtAction("GetTaskList", new { id = taskList.Id }, taskList);
+            var createdTask = _taskService.CreateTask(task);
+
+            var responseTask = TaskMapper(createdTask);
+
+            return Ok(responseTask);
         }
 
         // DELETE
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTaskList(int id)
+        [HttpDelete("{taskId}")]
+        public async Task<IActionResult> DeleteTaskList(int taskId)
         {
-            var taskList = await _context.TasksList.FindAsync(id);
-            if (taskList == null)
+            var task = _taskService.GetTaskById(taskId);
+
+            if (task == null)
             {
-                return NotFound();
+                return BadRequest();            }
+
+
+            bool result = await _taskService.DeleteTask(task);
+
+            if (!result)
+            {
+                return BadRequest();
             }
 
-            _context.TasksList.Remove(taskList);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return Ok();
         }
-
-        private bool TaskListExists(int id)
-        {
-            return _context.TasksList.Any(e => e.Id == id);
-        }
+       
     }
 }

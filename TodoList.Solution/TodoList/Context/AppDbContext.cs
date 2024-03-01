@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using TodoList.Models;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using TodoList.Entities;
 
 namespace TodoList.Data
 {
@@ -12,8 +12,7 @@ namespace TodoList.Data
             
         }       
 
-        public virtual DbSet<TaskList> TasksList { get; set; }
-
+        public virtual DbSet<TaskEntity> Tasks { get; set; }
         
     }
 }

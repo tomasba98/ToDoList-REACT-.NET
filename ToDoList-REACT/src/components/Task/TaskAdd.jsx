@@ -1,7 +1,6 @@
 import { Box, Button, Paper, TextField, Grid } from "@mui/material";
 import { useState } from "react";
 import * as yup from "yup";
-import axios from "axios";
 import { addTask } from "../../services/taskService";
 
 export function TaskAdd({ onTaskAdded }) {
@@ -71,6 +70,8 @@ export function TaskAdd({ onTaskAdded }) {
       console.log("error on add task:", error);
     } finally {
       setLoading(false);
+      values.taskName = "";
+      values.taskDescription = "";
     }
   };
 
