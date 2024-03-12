@@ -12,7 +12,7 @@ namespace TodoList.Controllers
 
         public dynamic ShowTasks() 
         {
-            return Task.FromResult(0); //nashe nose qe es
+            return Task.FromResult(0); 
         }
 
         [HttpPost]
