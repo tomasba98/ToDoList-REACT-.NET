@@ -1,7 +1,18 @@
-﻿namespace TodoList.Models.TasksModels;
-
-public class TaskRequest
+﻿namespace TodoList.Models.TasksModels
 {
-    public required string Name { get; set; }
-    public required string Description { get; set; }
+    /// <summary>
+    /// Represents a request for a task.
+    /// </summary>
+    public class TaskRequest
+    {
+        /// <summary>
+        /// Gets or sets the name of the task.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the description of the task.
+        /// </summary>
+        public string Description { get; set; }
+    }
 }

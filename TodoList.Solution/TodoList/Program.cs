@@ -1,12 +1,9 @@
 using FormManager.Services.Services.DataAccessLayer;
 using FormManager.Services.Services.DataAccessLayer.Implementation;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-
 using System.Text;
-
 using TodoList.Data;
 using TodoList.Entities.Task;
 using TodoList.Entities.UserEntity;
@@ -17,29 +14,33 @@ using TodoList.Services.TaskList.Implementation;
 using TodoList.Services.Users;
 using TodoList.Services.Users.Implementation;
 
-
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 string? connectionString = builder.Configuration.GetConnectionString("DbConnection");
 
+// Register services for task-related operations.
 builder.Services.AddScoped<IGenericService<TaskEntity>, GenericService<TaskEntity>>();
 builder.Services.AddScoped<ITaskService, TaskService>();
-builder.Services.AddScoped<TaskService>();
+
+// Register services for user-related operations.
 builder.Services.AddScoped<IGenericService<User>, GenericService<User>>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
-
+// Configure the database context with PostgreSQL.
 builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
+// Add controllers, API explorer, Swagger, and HttpContextAccessor.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
 
+// Add CORS for cross-origin resource sharing.
 builder.Services.AddCors();
 
+// Configure JWT-based authentication.
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = "Bearer";
@@ -52,11 +53,11 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         ValidIssuer = "ToDoList",
         ValidateAudience = false,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("!£@0#y~9I1.p0goq1£1+12345678901234567890123456789012"))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("!ï¿½@0#y~9I1.p0goq1ï¿½1+12345678901234567890123456789012"))
     };
 });
 
-
+// Configure Swagger documentation.
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -95,9 +96,9 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
 WebApplication app = builder.Build();
 
+// Enable CORS for specified origins.
 app.UseCors(policy =>
 {
     policy.WithOrigins("http://localhost:5173")
@@ -106,7 +107,7 @@ app.UseCors(policy =>
           .AllowCredentials();
 });
 
-// Configure the HTTP request pipeline.
+// Configure middleware components.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -114,11 +115,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

@@ -1,8 +1,18 @@
 ﻿namespace TodoList.Models.UserModels
 {
+    /// <summary>
+    /// Represents a request for access.
+    /// </summary>
     public class AccessRequest
     {
-        public required string UserName { get; set; }
-        public required string Password { get; set; }
+        /// <summary>
+        /// Gets or sets the username.
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the password.
+        /// </summary>
+        public string Password { get; set; }
     }
 }
