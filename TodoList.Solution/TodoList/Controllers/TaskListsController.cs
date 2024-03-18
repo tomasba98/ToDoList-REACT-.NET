@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
-
+using System.Threading.Tasks;
 using TodoList.Entities.Task;
 using TodoList.Entities.UserEntity;
 using TodoList.Models.TasksModels;
@@ -11,6 +13,9 @@ using TodoList.Services.Users;
 
 namespace TodoList.Controllers
 {
+    /// <summary>
+    /// Controller for managing tasks.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
@@ -20,6 +25,12 @@ namespace TodoList.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUserService _userService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TaskListsController"/> class.
+        /// </summary>
+        /// <param name="taskService">The task service.</param>
+        /// <param name="httpContextAccessor">The HTTP context accessor.</param>
+        /// <param name="userService">The user service.</param>
         public TaskListsController(ITaskService taskService, IHttpContextAccessor httpContextAccessor, IUserService userService)
         {
             _taskService = taskService;
@@ -27,6 +38,10 @@ namespace TodoList.Controllers
             _userService = userService;
         }
 
+        /// <summary>
+        /// Gets the user ID from the authentication token.
+        /// </summary>
+        /// <returns>The user ID if found, otherwise null.</returns>
         private int? GetUserIdFromToken()
         {
             Claim userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId");
@@ -37,6 +52,11 @@ namespace TodoList.Controllers
             return userId;
         }
 
+        /// <summary>
+        /// Validates the user ID.
+        /// </summary>
+        /// <param name="userId">The user ID to validate.</param>
+        /// <returns>True if the user ID is valid, otherwise false.</returns>
         private bool ValidateUserId(int userId)
         {
             if (_userService.GetUserById(userId) == null)
@@ -46,11 +66,21 @@ namespace TodoList.Controllers
             return true;
         }
 
+        /// <summary>
+        /// Gets a task by its ID.
+        /// </summary>
+        /// <param name="taskId">The ID of the task to retrieve.</param>
+        /// <returns>The task entity.</returns>
         private TaskEntity GetTaskById(int taskId)
         {
             return _taskService.GetTaskById(taskId);
         }
 
+        /// <summary>
+        /// Maps a task entity to a DTO.
+        /// </summary>
+        /// <param name="taskEntity">The task entity to map.</param>
+        /// <returns>The mapped task DTO.</returns>
         private TaskResponse MapToDto(TaskEntity taskEntity)
         {
             return new TaskResponse
@@ -61,6 +91,10 @@ namespace TodoList.Controllers
             };
         }
 
+        /// <summary>
+        /// Gets a list of tasks for the authenticated user.
+        /// </summary>
+        /// <returns>A list of tasks.</returns>
         [HttpGet]
         public ActionResult<IEnumerable<TaskResponse>> GetTasksList()
         {
@@ -76,6 +110,11 @@ namespace TodoList.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Gets a task by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the task to retrieve.</param>
+        /// <returns>The task with the specified ID.</returns>
         [HttpGet("{id}")]
         public ActionResult<TaskResponse> GetTask(int id)
         {
@@ -94,6 +133,12 @@ namespace TodoList.Controllers
             return Ok(MapToDto(task));
         }
 
+        /// <summary>
+        /// Updates a task.
+        /// </summary>
+        /// <param name="id">The ID of the task to update.</param>
+        /// <param name="taskRequest">The updated task information.</param>
+        /// <returns>An action result representing the operation result.</returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTask(int id, TaskRequest taskRequest)
         {
@@ -121,6 +166,11 @@ namespace TodoList.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Creates a new task.
+        /// </summary>
+        /// <param name="taskRequest">The task information to create.</param>
+        /// <returns>The created task.</returns>
         [HttpPost]
         public ActionResult<TaskResponse> CreateTask(TaskRequest taskRequest)
         {
@@ -143,7 +193,6 @@ namespace TodoList.Controllers
                 Name = taskRequest.Name,
                 UserId = userId.Value,
                 User = user
-
             };
 
             TaskEntity createdTask = _taskService.CreateTask(task);
@@ -155,6 +204,11 @@ namespace TodoList.Controllers
             return Ok(MapToDto(createdTask));
         }
 
+        /// <summary>
+        /// Deletes a task by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the task to delete.</param>
+        /// <returns>An action result representing the operation result.</returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTask(int id)
         {
