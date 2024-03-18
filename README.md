@@ -1,4 +1,4 @@
-# ToDoList REAST API | React + .Net
+# ToDoList REST API | React + .Net
 
 Este proyecto es una aplicación web que proporciona funcionalidades básicas para la gestión de listas de tareas y usuarios, con un enfoque en la seguridad a través de la autenticación basada en tokens. A continuación se detallan las principales características y tecnologías utilizadas.
 
