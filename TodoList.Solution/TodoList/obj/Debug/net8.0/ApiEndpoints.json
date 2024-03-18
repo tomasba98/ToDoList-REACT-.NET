@@ -1,5 +1,37 @@
 [
   {
+    "ContainingType": "TodoList.Controllers.AuthenticationController",
+    "Method": "Login",
+    "RelativePath": "api/Authentication/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "TodoList.Models.UserModels.AccessRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TodoList.Controllers.AuthenticationController",
+    "Method": "Register",
+    "RelativePath": "api/Authentication/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "TodoList.Models.UserModels.AccessRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TodoList.Controllers.TaskListsController",
     "Method": "GetTasksList",
     "RelativePath": "api/TaskLists",
@@ -9,7 +41,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[TodoList.Models.TaskResponse, TodoList, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[TodoList.Models.TasksModels.TaskResponse, TodoList, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -21,7 +53,7 @@
   },
   {
     "ContainingType": "TodoList.Controllers.TaskListsController",
-    "Method": "PostTaskList",
+    "Method": "CreateTask",
     "RelativePath": "api/TaskLists",
     "HttpMethod": "POST",
     "IsController": true,
@@ -29,13 +61,13 @@
     "Parameters": [
       {
         "Name": "taskRequest",
-        "Type": "TodoList.Models.TaskRequest",
+        "Type": "TodoList.Models.TasksModels.TaskRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "TodoList.Models.TaskResponse",
+        "Type": "TodoList.Models.TasksModels.TaskResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -47,26 +79,21 @@
   },
   {
     "ContainingType": "TodoList.Controllers.TaskListsController",
-    "Method": "GetTaskByIde",
+    "Method": "GetTask",
     "RelativePath": "api/TaskLists/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "taskId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "id",
-        "Type": "",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "TodoList.Models.TaskResponse",
+        "Type": "TodoList.Models.TasksModels.TaskResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -78,20 +105,20 @@
   },
   {
     "ContainingType": "TodoList.Controllers.TaskListsController",
-    "Method": "PutTaskList",
-    "RelativePath": "api/TaskLists/{taskId}",
+    "Method": "UpdateTask",
+    "RelativePath": "api/TaskLists/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "taskId",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       },
       {
         "Name": "taskRequest",
-        "Type": "TodoList.Models.TaskRequest",
+        "Type": "TodoList.Models.TasksModels.TaskRequest",
         "IsRequired": true
       }
     ],
@@ -99,14 +126,14 @@
   },
   {
     "ContainingType": "TodoList.Controllers.TaskListsController",
-    "Method": "DeleteTaskList",
-    "RelativePath": "api/TaskLists/{taskId}",
+    "Method": "DeleteTask",
+    "RelativePath": "api/TaskLists/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "taskId",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }

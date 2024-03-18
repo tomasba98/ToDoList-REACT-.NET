@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
+import { createContext, useContext } from "react";
 
-const userContext = React.createContext();
-const userToggleContext = React.createContext();
+const userContext = createContext();
+const userToggleContext = createContext();
 
 export function useUserContext() {
   return useContext(userContext);

@@ -14,7 +14,14 @@ export const fetchTasks = async () => {
 
 export const addTask = async (newTask) => {
   try {
-    const response = await axios.post(API_URL, newTask);
+    const response = await axios.post(
+      API_URL,
+      {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      },
+      newTask
+    );
     return response.data;
   } catch (error) {
     console.error("Error adding task:", error);

@@ -1,5 +1,6 @@
 ﻿using FormManager.Services.Services.DataAccessLayer;
-using TodoList.Entities;
+
+using TodoList.Entities.Task;
 
 namespace TodoList.Services.TaskList.Implementation
 {
@@ -25,14 +26,15 @@ namespace TodoList.Services.TaskList.Implementation
                 await _taskGenericService.DeleteAsync(taskEntity);
                 return true;
             }
-            catch {
+            catch
+            {
                 return false;
             }
         }
 
         public TaskEntity? GetTaskById(int taskId)
         {
-            return _taskGenericService.FilterByExpression(taskEntity  => taskEntity.Id == taskId).FirstOrDefault();
+            return _taskGenericService.FilterByExpression(taskEntity => taskEntity.Id == taskId).FirstOrDefault();
         }
 
         public async Task<bool> UpdateTask(TaskEntity taskEntity)
@@ -48,9 +50,9 @@ namespace TodoList.Services.TaskList.Implementation
             }
         }
 
-        public IEnumerable<TaskEntity> GetAllTasks()
+        public IEnumerable<TaskEntity> GetAllTasks(int userId)
         {
-            return _taskGenericService.FindAll();
+            return _taskGenericService.FilterByExpression(taskEntity => taskEntity.UserId == userId).ToList();
         }
     }
 }

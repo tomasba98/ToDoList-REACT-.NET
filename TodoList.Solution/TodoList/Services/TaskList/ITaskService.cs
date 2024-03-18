@@ -1,5 +1,4 @@
-﻿using TodoList.Entities;
-using TodoList.Models;
+﻿using TodoList.Entities.Task;
 
 namespace TodoList.Services.TaskList
 {
@@ -13,7 +12,7 @@ namespace TodoList.Services.TaskList
 
         Task<bool> DeleteTask(TaskEntity taskEntity);
 
-        IEnumerable<TaskEntity> GetAllTasks();
+        IEnumerable<TaskEntity> GetAllTasks(int userId);
 
     }
 }

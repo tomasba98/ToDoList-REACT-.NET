@@ -17,7 +17,6 @@ const Tasks = () => {
   const fetchTasksData = async () => {
     try {
       const tasks = await fetchTasks();
-      // Sort tasks by ID in descending order
       const sortedTasks = tasks.sort((a, b) => b.id - a.id);
       setTasksArray(sortedTasks);
     } catch (error) {

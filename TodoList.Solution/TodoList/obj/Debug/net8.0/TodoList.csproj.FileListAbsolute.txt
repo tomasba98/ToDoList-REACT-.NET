@@ -230,3 +230,11 @@ F:\PROGRAMACION\.Net\TodoList.Solution\TodoList\bin\Debug\net8.0\runtimes\win\li
 F:\PROGRAMACION\.Net\TodoList.Solution\TodoList\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 F:\PROGRAMACION\.Net\TodoList.Solution\TodoList\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 F:\PROGRAMACION\.Net\TodoList.Solution\TodoList\obj\Debug\net8.0\TodoList.sourcelink.json
+F:\PROGRAMACION\.Net\TodoList.Solution\TodoList\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+F:\PROGRAMACION\.Net\TodoList.Solution\TodoList\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+F:\PROGRAMACION\.Net\TodoList.Solution\TodoList\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+F:\PROGRAMACION\.Net\TodoList.Solution\TodoList\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+F:\PROGRAMACION\.Net\TodoList.Solution\TodoList\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+F:\PROGRAMACION\.Net\TodoList.Solution\TodoList\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+F:\PROGRAMACION\.Net\TodoList.Solution\TodoList\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+F:\PROGRAMACION\.Net\TodoList.Solution\TodoList\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll

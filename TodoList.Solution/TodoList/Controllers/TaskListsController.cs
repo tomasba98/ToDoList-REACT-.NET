@@ -1,90 +1,118 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using TodoList.Data;
-using TodoList.Entities;
-using TodoList.Models;
+
+using System.Security.Claims;
+
+using TodoList.Entities.Task;
+using TodoList.Entities.UserEntity;
+using TodoList.Models.TasksModels;
 using TodoList.Services.TaskList;
+using TodoList.Services.Users;
 
 namespace TodoList.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class TaskListsController : ControllerBase
     {
         private readonly ITaskService _taskService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IUserService _userService;
 
-        public TaskListsController(ITaskService taskService)
+        public TaskListsController(ITaskService taskService, IHttpContextAccessor httpContextAccessor, IUserService userService)
         {
             _taskService = taskService;
+            _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
+            _userService = userService;
         }
 
-        private static TaskResponse TaskMapper (TaskEntity taskEntity)
+        private int? GetUserIdFromToken()
         {
-            return new TaskResponse()
+            Claim userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId");
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
+            {
+                return null;
+            }
+            return userId;
+        }
+
+        private bool ValidateUserId(int userId)
+        {
+            if (_userService.GetUserById(userId) == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private TaskEntity GetTaskById(int taskId)
+        {
+            return _taskService.GetTaskById(taskId);
+        }
+
+        private TaskResponse MapToDto(TaskEntity taskEntity)
+        {
+            return new TaskResponse
             {
                 Id = taskEntity.Id,
-                Description = taskEntity.Description,
-                Name = taskEntity.Name
+                Name = taskEntity.Name,
+                Description = taskEntity.Description
             };
         }
 
-        private static TaskEntity CreateTask(TaskRequest taskRequest)
-        {
-            return new TaskEntity()
-            {
-                Description = taskRequest.Description,
-                Name = taskRequest.Name
-            };
-        }
-
-        // GET
         [HttpGet]
         public ActionResult<IEnumerable<TaskResponse>> GetTasksList()
         {
-            var tasks = _taskService.GetAllTasks();
+            int? userId = GetUserIdFromToken();
+            if (!userId.HasValue)
+            {
+                return BadRequest();
+            }
 
-           IEnumerable<TaskResponse> result = tasks.Select(TaskMapper).ToList();
+            IEnumerable<TaskEntity> tasks = _taskService.GetAllTasks(userId.Value);
+            IEnumerable<TaskResponse> result = tasks.Select(taskEntity => MapToDto(taskEntity)).ToList();
 
             return Ok(result);
         }
 
-        // GET ID
         [HttpGet("{id}")]
-        public ActionResult<TaskResponse> GetTaskByIde(int taskId)
+        public ActionResult<TaskResponse> GetTask(int id)
         {
-            var task = _taskService.GetTaskById(taskId);
-            
-            if (task == null)
+            int? userId = GetUserIdFromToken();
+            if (!userId.HasValue)
             {
                 return BadRequest();
             }
 
-            return Ok(TaskMapper(task));
+            TaskEntity task = GetTaskById(id);
+            if (task == null || task.UserId != userId.Value)
+            {
+                return BadRequest();
+            }
+
+            return Ok(MapToDto(task));
         }
 
-        
-        // PUT
-        [HttpPut("{taskId}")]
-        public async Task<IActionResult> PutTaskList(int taskId, TaskRequest taskRequest)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTask(int id, TaskRequest taskRequest)
         {
-            var task = _taskService.GetTaskById(taskId);
-
-            if (task == null)
+            int? userId = GetUserIdFromToken();
+            if (!userId.HasValue || !ValidateUserId(userId.Value))
             {
                 return BadRequest();
             }
-            
+
+            TaskEntity task = GetTaskById(id);
+            if (task == null || task.UserId != userId.Value)
+            {
+                return BadRequest();
+            }
+
             task.Name = taskRequest.Name;
             task.Description = taskRequest.Description;
 
             bool result = await _taskService.UpdateTask(task);
-
             if (!result)
             {
                 return BadRequest();
@@ -93,32 +121,56 @@ namespace TodoList.Controllers
             return Ok();
         }
 
-        // POST
         [HttpPost]
-        public ActionResult<TaskResponse> PostTaskList(TaskRequest taskRequest)
+        public ActionResult<TaskResponse> CreateTask(TaskRequest taskRequest)
         {
-            var task = CreateTask(taskRequest);
+            int? userId = GetUserIdFromToken();
+            if (!userId.HasValue || !ValidateUserId(userId.Value))
+            {
+                return BadRequest();
+            }
 
-            var createdTask = _taskService.CreateTask(task);
+            User? user = _userService.GetUserById(userId.Value);
 
-            var responseTask = TaskMapper(createdTask);
+            if (user is null)
+            {
+                return BadRequest();
+            }
 
-            return Ok(responseTask);
+            TaskEntity task = new()
+            {
+                Description = taskRequest.Description,
+                Name = taskRequest.Name,
+                UserId = userId.Value,
+                User = user
+
+            };
+
+            TaskEntity createdTask = _taskService.CreateTask(task);
+            if (createdTask == null)
+            {
+                return BadRequest("Can't create the task");
+            }
+
+            return Ok(MapToDto(createdTask));
         }
 
-        // DELETE
-        [HttpDelete("{taskId}")]
-        public async Task<IActionResult> DeleteTaskList(int taskId)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTask(int id)
         {
-            var task = _taskService.GetTaskById(taskId);
-
-            if (task == null)
+            int? userId = GetUserIdFromToken();
+            if (!userId.HasValue || !ValidateUserId(userId.Value))
             {
-                return BadRequest();            }
+                return BadRequest();
+            }
 
+            TaskEntity task = GetTaskById(id);
+            if (task == null || task.UserId != userId.Value)
+            {
+                return BadRequest();
+            }
 
             bool result = await _taskService.DeleteTask(task);
-
             if (!result)
             {
                 return BadRequest();
@@ -126,6 +178,5 @@ namespace TodoList.Controllers
 
             return Ok();
         }
-       
     }
 }
