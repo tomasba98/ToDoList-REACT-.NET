@@ -1,5 +1,7 @@
-# ToDoList-React-.NET
+# ToDoList-React-.NET API REST
 
 CRUD de listas de tarea.
 
-*El siguiente paso en el proyecto en la gestion de usuarios con cada uno con sus respectivas tareas.*
+Bd: PostgreSQL
+
+*Actualmente estoy trabajando en el siguiente paso en el proyecto en la gestion de usuarios con cada uno con sus respectivas tareas.*
