@@ -11,6 +11,9 @@ Este proyecto es una aplicación web que proporciona funcionalidades básicas pa
 - **Clase "GenericDao" y  "GenericService":** Se ha implementado una clase "GenericDao" para el acceso y manipulación de objetos en la base de datos de forma templatizada. Además, se ha desarrollado un servicio genérico "GenericService" para operaciones comunes en los diferentes tipos de objetos.
 
 ## Tecnologías utilizadas
+- **React:** Para el frontend de la aplicación se utiliza React.
+
+- **Axios:** Axios se utiliza para realizar solicitudes HTTP desde el frontend de la aplicación hacia el backend, lo que facilita la comunicación entre el cliente y el servidor.
 
 - **Base de Datos:** PostgreSQL se utiliza como sistema de gestión de base de datos para almacenar la información de las listas de tareas y los usuarios.
 
