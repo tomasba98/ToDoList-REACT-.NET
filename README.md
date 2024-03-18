@@ -8,7 +8,7 @@ Este proyecto es una aplicación web que proporciona funcionalidades básicas pa
 
 - **Autenticación de Usuarios:** La aplicación implementa un sistema de autenticación de usuarios mediante tokens JWT (JSON Web Tokens), lo que garantiza la seguridad de las operaciones y protege los datos sensibles.
 
-- **Clase "GenericDao" y Servicio Genérico "GenericService":** Se ha implementado una clase "GenericDao" para el acceso y manipulación de objetos en la base de datos de forma templatizada. Además, se ha desarrollado un servicio genérico "GenericService" para operaciones comunes en los diferentes tipos de objetos.
+- **Clase "GenericDao" y  "GenericService":** Se ha implementado una clase "GenericDao" para el acceso y manipulación de objetos en la base de datos de forma templatizada. Además, se ha desarrollado un servicio genérico "GenericService" para operaciones comunes en los diferentes tipos de objetos.
 
 ## Tecnologías utilizadas
 
@@ -24,4 +24,3 @@ Este proyecto es una aplicación web que proporciona funcionalidades básicas pa
 
 ---
 
-Este README proporciona una visión general del proyecto, sus características principales y las tecnologías utilizadas. Se recomienda proporcionar instrucciones detalladas sobre cómo configurar y ejecutar la aplicación, así como cualquier otra información relevante para los usuarios y colaboradores del proyecto.
