@@ -1,14 +1,14 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import authContext from "./AuthContext"; // Importa el contexto desde el nuevo archivo
+import AuthContext from "./AuthContext";
 
 const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useState({ userName: "", accesToken: "" });
 
   return (
-    <authContext.Provider value={{ auth, setAuth }}>
-      {children}
-    </authContext.Provider>
+    <AuthContext.Provider value={{ auth, setAuth }}>
+      {children}{" "}
+    </AuthContext.Provider>
   );
 };
 
@@ -16,4 +16,4 @@ AuthProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default AuthProvider; // Exporta el componente AuthProvider
+export default AuthProvider;

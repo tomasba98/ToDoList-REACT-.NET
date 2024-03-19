@@ -1,9 +1,12 @@
 using FormManager.Services.Services.DataAccessLayer;
 using FormManager.Services.Services.DataAccessLayer.Implementation;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+
 using System.Text;
+
 using TodoList.Data;
 using TodoList.Entities.Task;
 using TodoList.Entities.UserEntity;
@@ -53,7 +56,7 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         ValidIssuer = "ToDoList",
         ValidateAudience = false,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("!�@0#y~9I1.p0goq1�1+12345678901234567890123456789012"))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("!£@0#y~9I1.p0goq1£1+12345678901234567890123456789012"))
     };
 });
 

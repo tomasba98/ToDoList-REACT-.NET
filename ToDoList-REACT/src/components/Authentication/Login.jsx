@@ -1,12 +1,13 @@
 import { TextField, Button, Box, Typography } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { axiosPrivate } from "../../api/axios";
 import useAuth from "../../hooks/useAuth";
-import axios from "axios";
+import { axiosPrivate } from "../../api/axios";
+import AuthContext from "../../context/AuthContext";
 
 const Login = () => {
   const { setAuth } = useAuth();
+  const { auth } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,39 +15,26 @@ const Login = () => {
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState("");
-
-  useEffect(() => {
-    setErrMsg("");
-  }, [userName, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        `https://localhost:44307/api/Authentication/Login`,
-        JSON.stringify({ userName, password }), //Deben ser igual que en el Json los nombres de las variables
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
+      const response = await axiosPrivate.post(
+        "Authentication/Login",
+        JSON.stringify({ userName, password })
       );
       console.log(JSON.stringify(response?.data));
-
-      //console.log(JSON.stringify(response));
-      const accessToken = response?.data?.accessToken;
-
+      const accessToken = response?.data?.token;
       setAuth({ userName, accessToken });
       setUserName("");
       setPassword("");
+      console.log(auth.accessToken);
       navigate(from, { replace: true });
-      //
     } catch (err) {
       if (!err?.response) {
         alert("No Server Response");
         console.log(err);
-        //setErrMsg("No Server Response");
       } else if (err.response?.status === 400) {
         alert("Missing userNamename or password");
       } else if (err.response?.status === 401) {

@@ -1,7 +1,15 @@
 import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
 import { Outlet, Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 export function Nav() {
+  const { auth } = useAuth();
+  const { setAuth } = useAuth();
+
+  const handleLogout = () => {
+    setAuth({ userName: "", accessToken: "" });
+  };
+
   return (
     <>
       <AppBar
@@ -22,9 +30,25 @@ export function Nav() {
             <Button component={Link} to="/tasks" color="inherit">
               Tasks
             </Button>
-            <Button component={Link} to="/login" color="inherit">
-              Login
-            </Button>
+            {auth.userName ? (
+              <Button
+                variant="contained"
+                color="error"
+                onClick={handleLogout}
+                sx={{ marginLeft: "50px" }}
+              >
+                LogOut
+              </Button>
+            ) : (
+              <Button
+                component={Link}
+                to="/login"
+                color="inherit"
+                sx={{ marginLeft: "auto" }}
+              >
+                Login
+              </Button>
+            )}
           </Box>
           <img
             src={"src/assets/vava.png"}

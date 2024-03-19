@@ -12,40 +12,36 @@ import { ToastContainer } from "react-toastify";
 import Footer from "./components/Footer";
 import RequireLoged from "./components/RequireLoged";
 
-//export const userContext = React.createContext();
-
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <userContext>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              minHeight: "100vh",
-            }}
-          >
-            <div style={{ flex: 1 }}>
-              <Routes>
-                <Route path="/" element={<Nav />}>
-                  {/*PUBLIC*/}
-                  <Route index element={<Home />} />
-                  <Route path="login" element={<Login />} />
-                  <Route path="signup" element={<SignUp />} />
-                  <Route path="*" element={<Home />} />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "100vh",
+          }}
+        >
+          <div style={{ flex: 1 }}>
+            <Routes>
+              <Route path="/" element={<Nav />}>
+                {/*PUBLIC*/}
+                <Route index element={<Home />} />
+                <Route path="login" element={<Login />} />
+                <Route path="signup" element={<SignUp />} />
+                <Route path="*" element={<Home />} />
 
-                  {/*PROTECTED*/}
-                  <Route element={<RequireLoged />}>
-                    <Route path="tasks" element={<Tasks />} />
-                  </Route>
+                {/*PROTECTED*/}
+                <Route element={<RequireLoged />}>
+                  <Route path="tasks" element={<Tasks />} />
                 </Route>
-              </Routes>
-            </div>
-            <Footer />
+              </Route>
+            </Routes>
           </div>
-        </userContext>
+          <Footer />
+        </div>
         <ToastContainer />
       </ThemeProvider>
     </>

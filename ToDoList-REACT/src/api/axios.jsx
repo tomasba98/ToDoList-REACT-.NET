@@ -1,10 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://localhost:44307/api";
-
-const axiosInstance = axios.create({
-  baseURL: BASE_URL,
-});
+const BASE_URL = `https://localhost:44307/api/`;
 
 const axiosPrivate = axios.create({
   baseURL: BASE_URL,
@@ -12,4 +8,4 @@ const axiosPrivate = axios.create({
   withCredentials: true,
 });
 
-export { axiosInstance, axiosPrivate, BASE_URL }; // Dando nombre a las exportaciones
+export { axiosPrivate, BASE_URL };

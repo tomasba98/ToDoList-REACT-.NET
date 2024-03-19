@@ -2,9 +2,10 @@ import { Box, Typography, TextField, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { axiosPrivate } from "../../api/axios";
+import { useNavigate } from "react-router-dom";
 
 const UserName_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
+const PWD_REGEX = /^(?=.*[a-z]).{3,24}$/;
 
 const SignUp = () => {
   const [UserName, setUserName] = useState("");
@@ -18,6 +19,8 @@ const SignUp = () => {
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setValidName(UserName_REGEX.test(UserName));
@@ -58,7 +61,7 @@ const SignUp = () => {
 
     try {
       const response = await axiosPrivate.post(
-        `/Authentication/Register`,
+        `Authentication/Register`,
         JSON.stringify({ UserName, Password })
       );
       console.log(JSON.stringify(response?.data));
@@ -66,6 +69,7 @@ const SignUp = () => {
       setUserName("");
       setPassword("");
       setMatchPassword("");
+      navigate("/login");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");

@@ -1,10 +1,12 @@
-import axios from "axios";
+import { axiosPrivate } from "../api/axios";
 
-const API_URL = "https://localhost:44307/api/TaskLists";
+const API_URL = "TaskLists";
 
-export const fetchTasks = async () => {
+export const fetchTasks = async (accestoken) => {
   try {
-    const response = await axios.get(API_URL);
+    const response = await axiosPrivate.get(API_URL, {
+      headers: { Authorization: `Bearer ${accestoken}` },
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching tasks:", error);
@@ -12,16 +14,11 @@ export const fetchTasks = async () => {
   }
 };
 
-export const addTask = async (newTask) => {
+export const addTask = async (newTask, accestoken) => {
   try {
-    const response = await axios.post(
-      API_URL,
-      {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      },
-      newTask
-    );
+    const response = await axiosPrivate.post(API_URL, newTask, {
+      headers: { Authorization: `Bearer ${accestoken}` },
+    });
     return response.data;
   } catch (error) {
     console.error("Error adding task:", error);
@@ -29,9 +26,11 @@ export const addTask = async (newTask) => {
   }
 };
 
-export const deleteTask = async (taskId) => {
+export const deleteTask = async (taskId, accestoken) => {
   try {
-    await axios.delete(`${API_URL}/${taskId}`);
+    await axiosPrivate.delete(`${API_URL}/${taskId}`, {
+      headers: { Authorization: `Bearer ${accestoken}` },
+    });
     console.log("Task deleted successfully.");
   } catch (error) {
     console.error("Error deleting task:", error);
@@ -39,11 +38,14 @@ export const deleteTask = async (taskId) => {
   }
 };
 
-export const updateTask = async (updatedTask) => {
+export const updateTask = async (updatedTask, accestoken) => {
   try {
-    const response = await axios.put(
+    const response = await axiosPrivate.put(
       `${API_URL}/${updatedTask.id}`,
-      updatedTask
+      updatedTask,
+      {
+        headers: { Authorization: `Bearer ${accestoken}` },
+      }
     );
     console.log("Task updated successfully:", response);
     return response.data;

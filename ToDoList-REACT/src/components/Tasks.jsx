@@ -2,21 +2,19 @@
 import { useState, useEffect } from "react";
 import { Grid, Typography, CircularProgress, Box } from "@mui/material";
 import { Task } from "./Task/Task";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 import { TaskAdd } from "./Task/TaskAdd";
-import {
-  addTask,
-  deleteTask,
-  updateTask,
-  fetchTasks,
-} from "../services/taskService";
+import { deleteTask, updateTask, fetchTasks } from "../services/taskService";
 
 const Tasks = () => {
   const [tasksArray, setTasksArray] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { auth } = useContext(AuthContext);
 
   const fetchTasksData = async () => {
     try {
-      const tasks = await fetchTasks();
+      const tasks = await fetchTasks(auth.accessToken);
       const sortedTasks = tasks.sort((a, b) => b.id - a.id);
       setTasksArray(sortedTasks);
     } catch (error) {
@@ -26,13 +24,13 @@ const Tasks = () => {
     }
   };
 
-  const addTask = (newTask) => {
+  const handleAddTask = (newTask) => {
     setTasksArray((prevTasks) => [newTask, ...prevTasks]);
   };
 
   const onDelete = async (taskId) => {
     try {
-      await deleteTask(taskId);
+      await deleteTask(taskId, auth.accessToken);
       setTasksArray((prevTasks) =>
         prevTasks.filter((task) => task.id !== taskId)
       );
@@ -43,7 +41,7 @@ const Tasks = () => {
 
   const onUpdate = async (updatedTask) => {
     try {
-      await updateTask(updatedTask);
+      await updateTask(updatedTask, auth.accessToken);
       setTasksArray((prevTasks) =>
         prevTasks.map((task) =>
           task.id === updatedTask.id ? updatedTask : task
@@ -62,7 +60,7 @@ const Tasks = () => {
     <>
       <Grid sx={{ marginTop: 4 }} container spacing={2}>
         <Grid item xs={12} key={99}>
-          <TaskAdd onTaskAdded={addTask} />
+          <TaskAdd onTaskAdded={handleAddTask} />
         </Grid>
 
         {loading ? (

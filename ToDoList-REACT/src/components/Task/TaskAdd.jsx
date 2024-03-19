@@ -1,10 +1,14 @@
+/* eslint-disable react/prop-types */
 import { Box, Button, Paper, TextField, Grid } from "@mui/material";
 import { useState } from "react";
 import * as yup from "yup";
 import { addTask } from "../../services/taskService";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 export function TaskAdd({ onTaskAdded }) {
   const [loading, setLoading] = useState(false);
+  const { auth } = useContext(AuthContext);
 
   const initialValues = {
     taskName: "",
@@ -64,7 +68,7 @@ export function TaskAdd({ onTaskAdded }) {
     };
 
     try {
-      const addedTask = await addTask(taskData);
+      const addedTask = await addTask(taskData, auth.accessToken);
       onTaskAdded(addedTask);
     } catch (error) {
       console.log("error on add task:", error);
