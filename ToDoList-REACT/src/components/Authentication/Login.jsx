@@ -6,10 +6,10 @@ import { axiosPrivate } from "../../api/axios";
 import AuthContext from "../../context/AuthContext";
 
 const Login = () => {
+  const navigate = useNavigate();
   const { setAuth } = useAuth();
   const { auth } = useContext(AuthContext);
-
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
@@ -18,6 +18,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await axiosPrivate.post(
@@ -43,6 +44,8 @@ const Login = () => {
         alert("Login Failed");
         console.log(err);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -85,6 +88,7 @@ const Login = () => {
           variant="contained"
           color="secondary"
           type="submit"
+          disabled={loading}
           sx={{ marginTop: "16px" }}
         >
           Iniciar sesión

@@ -51,10 +51,11 @@ export function TaskAdd({ onTaskAdded }) {
   };
 
   const isValid = Object.values(errors).every((error) => error === "");
+  console.log(isValid);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     if (!isValid) {
       console.error("Form has errors. Cannot submit.");
       return;
@@ -129,7 +130,7 @@ export function TaskAdd({ onTaskAdded }) {
             <Grid item xs={2} sx={{ display: "flex" }}>
               <Button
                 sx={{ margin: "auto" }}
-                disabled={!isValid}
+                disabled={loading || !isValid}
                 variant="contained"
                 color="secondary"
                 type="submit"

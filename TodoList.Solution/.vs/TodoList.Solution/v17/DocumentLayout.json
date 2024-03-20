@@ -91,8 +91,7 @@
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAC8AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-14T23:57:43.911Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -145,8 +144,7 @@
               "RelativeToolTip": "TodoList\\Controllers\\AuthenticationController.cs",
               "ViewState": "AQIAAC0AAAAAAAAAAADwvyEAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-14T23:29:50.832Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-14T23:29:50.832Z"
             },
             {
               "$type": "Document",
@@ -206,8 +204,7 @@
               "RelativeToolTip": "TodoList\\Utils\\JwtTokenGenerator.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAABqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-14T23:40:05.678Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-14T23:40:05.678Z"
             },
             {
               "$type": "Document",

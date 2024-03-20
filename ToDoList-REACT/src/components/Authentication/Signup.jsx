@@ -17,6 +17,7 @@ const SignUp = () => {
   const [matchPassword, setMatchPassword] = useState("");
   const [validMatch, setValidMatch] = useState(false);
 
+  const [loading, setLoading] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -53,7 +54,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     if (!validName || !validPwd || !validMatch) {
       setErrMsg("Invalid Entry");
       return;
@@ -78,6 +79,8 @@ const SignUp = () => {
       } else {
         setErrMsg("Registration Failed");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -153,6 +156,7 @@ const SignUp = () => {
               variant="contained"
               color="secondary"
               type="submit"
+              disabled={loading}
               sx={{ marginTop: "16px" }}
             >
               Registrarse
