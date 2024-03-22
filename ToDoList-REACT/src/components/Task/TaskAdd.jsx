@@ -51,11 +51,10 @@ export function TaskAdd({ onTaskAdded }) {
   };
 
   const isValid = Object.values(errors).every((error) => error === "");
-  console.log(isValid);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!isValid) {
       console.error("Form has errors. Cannot submit.");
       return;

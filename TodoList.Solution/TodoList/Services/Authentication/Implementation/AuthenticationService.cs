@@ -14,7 +14,7 @@ public class AuthenticationService : IAuthenticationService
     public AuthenticationResponse GenerateJwt(User user)
     {
 
-        string token = JwtTokenGenerator.GenerateToken(user);
+        string token = Encrypt.GenerateToken(user);
 
         return new AuthenticationResponse(user.UserName, token);
     }

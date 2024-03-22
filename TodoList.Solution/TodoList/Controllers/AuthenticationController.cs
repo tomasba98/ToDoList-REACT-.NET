@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 using TodoList.Entities.UserEntity;
 using TodoList.Models.UserModels;
 using TodoList.Services.Authentication;
 using TodoList.Services.Users;
+
+using TodoList.Utils;
 
 namespace TodoList.Controllers
 {
@@ -37,10 +40,11 @@ namespace TodoList.Controllers
         [HttpPost("Register")]
         public IActionResult Register(AccessRequest request)
         {
+            string hashPassword = Encrypt.Hash(request.Password);
             User newUser = new()
             {
                 UserName = request.UserName,
-                Password = request.Password
+                Password = hashPassword
             };
 
             bool result = _userService.CreateUser(newUser);
@@ -63,7 +67,8 @@ namespace TodoList.Controllers
                 return BadRequest("Invalid Credential");
             }
 
-            if (!ValidatePassword(user.Password, request.Password))
+
+            if (!Encrypt.CheckHash(request.Password, user.Password))
             {
                 return BadRequest("Invalid Credential");
             }
@@ -71,17 +76,6 @@ namespace TodoList.Controllers
             AuthenticationResponse response = _authenticationService.GenerateJwt(user);
 
             return Ok(response);
-        }
-
-        /// <summary>
-        /// Validates the entered password against the stored password.
-        /// </summary>
-        /// <param name="password">The stored password.</param>
-        /// <param name="passwordRequest">The entered password.</param>
-        /// <returns>True if the passwords match, otherwise false.</returns>
-        private bool ValidatePassword(string password, string passwordRequest)
-        {
-            return password.Equals(passwordRequest);
         }
     }
 }

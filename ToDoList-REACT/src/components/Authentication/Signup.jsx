@@ -61,11 +61,10 @@ const SignUp = () => {
     }
 
     try {
-      const response = await axiosPrivate.post(
+      await axiosPrivate.post(
         `Authentication/Register`,
         JSON.stringify({ UserName, Password })
       );
-      console.log(JSON.stringify(response?.data));
       setSuccess(true);
       setUserName("");
       setPassword("");
@@ -86,92 +85,88 @@ const SignUp = () => {
 
   return (
     <>
-      {success ? (
-        console.log("llevar a login")
-      ) : (
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            maxWidth: "300px",
-            margin: "auto",
-            backgroundColor: "white",
-            color: "black",
-            padding: "16px",
-            borderRadius: "8px",
-            marginTop: "3rem",
-          }}
-        >
-          <Typography variant="h5">Sign Up</Typography>
-          <form onSubmit={handleSubmit} id={"login-form"}>
-            <TextField
-              label="UserName"
-              variant="outlined"
-              margin="normal"
-              aria-invalid={!validName}
-              value={UserName}
-              onChange={handleUserNameChange}
-              color={!validName ? "error" : "secondary"}
-              sx={{ color: "#ffffff" }}
-            />
-            {!validName && (
-              <Typography variant="caption" color="error">
-                UserName must start with a letter and contain only letters,
-                numbers, (4-24 characters).
-              </Typography>
-            )}
-            <TextField
-              label="Password"
-              type="Password"
-              variant="outlined"
-              margin="normal"
-              value={Password}
-              onChange={handlePasswordChange}
-              color={!validPwd ? "error" : "secondary"}
-              sx={{ color: "#ffffff" }}
-            />
-            {!validPwd && (
-              <Typography variant="caption" color="error">
-                Password must be 8-24 characters, including at least one
-                lowercase letter, one uppercase letter, one digit.
-              </Typography>
-            )}
-            <TextField
-              label="Repeat Password"
-              type="Password"
-              variant="outlined"
-              margin="normal"
-              name="Password2"
-              value={matchPassword}
-              onChange={handleMatchPasswordChange}
-              color={!validMatch ? "error" : "secondary"}
-              sx={{ color: "#ffffff" }}
-            />
-            {!validMatch && (
-              <Typography variant="caption" color="error">
-                Passwords do not match.
-              </Typography>
-            )}
-            <Button
-              variant="contained"
-              color="secondary"
-              type="submit"
-              disabled={loading}
-              sx={{ marginTop: "16px" }}
-            >
-              Registrarse
-            </Button>
-            {errMsg && (
-              <Typography variant="caption" color="error" sx={{ marginTop: 1 }}>
-                {errMsg}
-              </Typography>
-            )}
-            <Typography sx={{ marginTop: 1 }}>
-              If you are registered, <Link to="/login">Login</Link>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          maxWidth: "300px",
+          margin: "auto",
+          backgroundColor: "white",
+          color: "black",
+          padding: "16px",
+          borderRadius: "8px",
+          marginTop: "3rem",
+        }}
+      >
+        <Typography variant="h5">Sign Up</Typography>
+        <form onSubmit={handleSubmit} id={"login-form"}>
+          <TextField
+            label="UserName"
+            variant="outlined"
+            margin="normal"
+            aria-invalid={!validName}
+            value={UserName}
+            onChange={handleUserNameChange}
+            color={!validName ? "error" : "secondary"}
+            sx={{ color: "#ffffff" }}
+          />
+          {!validName && (
+            <Typography variant="caption" color="error">
+              UserName must start with a letter and contain only letters,
+              numbers, (4-24 characters).
             </Typography>
-          </form>
-        </Box>
-      )}
+          )}
+          <TextField
+            label="Password"
+            type="Password"
+            variant="outlined"
+            margin="normal"
+            value={Password}
+            onChange={handlePasswordChange}
+            color={!validPwd ? "error" : "secondary"}
+            sx={{ color: "#ffffff" }}
+          />
+          {!validPwd && (
+            <Typography variant="caption" color="error">
+              Password must be 8-24 characters, including at least one lowercase
+              letter, one uppercase letter, one digit.
+            </Typography>
+          )}
+          <TextField
+            label="Repeat Password"
+            type="Password"
+            variant="outlined"
+            margin="normal"
+            name="Password2"
+            value={matchPassword}
+            onChange={handleMatchPasswordChange}
+            color={!validMatch ? "error" : "secondary"}
+            sx={{ color: "#ffffff" }}
+          />
+          {!validMatch && (
+            <Typography variant="caption" color="error">
+              Passwords do not match.
+            </Typography>
+          )}
+          <Button
+            variant="contained"
+            color="secondary"
+            type="submit"
+            disabled={loading}
+            sx={{ marginTop: "16px" }}
+          >
+            Registrarse
+          </Button>
+          {errMsg && (
+            <Typography variant="caption" color="error" sx={{ marginTop: 1 }}>
+              {errMsg}
+            </Typography>
+          )}
+          <Typography sx={{ marginTop: 1 }}>
+            If you are registered, <Link to="/login">Login</Link>
+          </Typography>
+        </form>
+      </Box>
     </>
   );
 };

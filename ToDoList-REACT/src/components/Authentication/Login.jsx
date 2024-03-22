@@ -25,12 +25,10 @@ const Login = () => {
         "Authentication/Login",
         JSON.stringify({ userName, password })
       );
-      console.log(JSON.stringify(response?.data));
       const accessToken = response?.data?.token;
       setAuth({ userName, accessToken });
       setUserName("");
       setPassword("");
-      console.log(auth.accessToken);
       navigate(from, { replace: true });
     } catch (err) {
       if (!err?.response) {
