@@ -1,6 +1,5 @@
-﻿using FormManager.Services.Services.DataAccessLayer;
-
-using TodoList.Entities.Task;
+﻿using TodoList.Entities.Task;
+using TodoList.Services.DataAccessLayer;
 
 namespace TodoList.Services.TaskList.Implementation
 {
@@ -15,7 +14,7 @@ namespace TodoList.Services.TaskList.Implementation
 
         public TaskEntity CreateTask(TaskEntity taskEntity)
         {
-            _taskGenericService.Insert(taskEntity);
+            _taskGenericService.InsertAsync(taskEntity);
             return taskEntity;
         }
 
@@ -34,7 +33,7 @@ namespace TodoList.Services.TaskList.Implementation
 
         public TaskEntity? GetTaskById(int taskId)
         {
-            return _taskGenericService.FilterByExpression(taskEntity => taskEntity.Id == taskId).FirstOrDefault();
+            return _taskGenericService.FilterByExpressionLinq(taskEntity => taskEntity.Id == taskId).FirstOrDefault();
         }
 
         public async Task<bool> UpdateTask(TaskEntity taskEntity)
@@ -52,7 +51,7 @@ namespace TodoList.Services.TaskList.Implementation
 
         public IEnumerable<TaskEntity> GetAllTasks(int userId)
         {
-            return _taskGenericService.FilterByExpression(taskEntity => taskEntity.UserId == userId).ToList();
+            return _taskGenericService.FilterByExpressionLinq(taskEntity => taskEntity.UserId == userId).ToList();
         }
     }
 }

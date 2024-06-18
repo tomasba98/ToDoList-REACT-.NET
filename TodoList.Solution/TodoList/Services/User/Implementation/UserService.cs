@@ -1,6 +1,5 @@
-﻿using FormManager.Services.Services.DataAccessLayer;
-
-using TodoList.Entities.UserEntity;
+﻿using TodoList.Entities.UserEntity;
+using TodoList.Services.DataAccessLayer;
 
 namespace TodoList.Services.Users.Implementation;
 
@@ -18,7 +17,7 @@ public class UserService : IUserService
     {
         try
         {
-            _userGenericService.Insert(userEntity);
+            _userGenericService.InsertAsync(userEntity);
             return true;
         }
         catch
@@ -29,12 +28,12 @@ public class UserService : IUserService
 
     public User? GetUserById(int userId)
     {
-        return _userGenericService.FilterByExpression(user => user.Id == userId).FirstOrDefault();
+        return _userGenericService.FilterByExpressionLinq(user => user.Id == userId).FirstOrDefault();
     }
 
     public User? GetUserByName(string userName)
     {
-        return _userGenericService.FilterByExpression(user => user.UserName == userName).FirstOrDefault();
+        return _userGenericService.FilterByExpressionLinq(user => user.UserName == userName).FirstOrDefault();
     }
 
 

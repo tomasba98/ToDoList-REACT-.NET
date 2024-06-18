@@ -42,7 +42,13 @@ namespace TodoList.Controllers
         /// <returns>The user ID if found, otherwise null.</returns>
         private int? GetUserIdFromToken()
         {
-            Claim userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId");
+            HttpContext? httpContext = _httpContextAccessor.HttpContext;
+            if (httpContext == null)
+            {
+                return null;
+            }
+
+            Claim? userIdClaim = httpContext.User.FindFirst("UserId");
             if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
             {
                 return null;
@@ -69,7 +75,7 @@ namespace TodoList.Controllers
         /// </summary>
         /// <param name="taskId">The ID of the task to retrieve.</param>
         /// <returns>The task entity.</returns>
-        private TaskEntity GetTaskById(int taskId)
+        private TaskEntity? GetTaskById(int taskId)
         {
             return _taskService.GetTaskById(taskId);
         }
@@ -79,7 +85,7 @@ namespace TodoList.Controllers
         /// </summary>
         /// <param name="taskEntity">The task entity to map.</param>
         /// <returns>The mapped task DTO.</returns>
-        private TaskResponse MapToDto(TaskEntity taskEntity)
+        private static TaskResponse MapToDto(TaskEntity taskEntity)
         {
             return new TaskResponse
             {
@@ -122,10 +128,15 @@ namespace TodoList.Controllers
                 return BadRequest();
             }
 
-            TaskEntity task = GetTaskById(id);
-            if (task == null || task.UserId != userId.Value)
+            TaskEntity? task = GetTaskById(id);
+            if (task == null)
             {
-                return BadRequest();
+                return NotFound();
+            }
+
+            if (task.UserId != userId.Value)
+            {
+                return Forbid();
             }
 
             return Ok(MapToDto(task));
@@ -146,10 +157,15 @@ namespace TodoList.Controllers
                 return BadRequest();
             }
 
-            TaskEntity task = GetTaskById(id);
-            if (task == null || task.UserId != userId.Value)
+            TaskEntity? task = GetTaskById(id);
+            if (task == null)
             {
-                return BadRequest();
+                return NotFound();
+            }
+
+            if (task.UserId != userId.Value)
+            {
+                return Forbid();
             }
 
             task.Name = taskRequest.Name;
@@ -163,6 +179,7 @@ namespace TodoList.Controllers
 
             return Ok();
         }
+
 
         /// <summary>
         /// Creates a new task.
@@ -216,7 +233,7 @@ namespace TodoList.Controllers
                 return BadRequest();
             }
 
-            TaskEntity task = GetTaskById(id);
+            TaskEntity? task = GetTaskById(id);
             if (task == null || task.UserId != userId.Value)
             {
                 return BadRequest();

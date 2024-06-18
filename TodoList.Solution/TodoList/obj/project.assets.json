@@ -7431,11 +7431,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\TodoList\\TodoList.csproj",
+      "projectUniqueName": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\TodoList.csproj",
       "projectName": "TodoList",
-      "projectPath": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\TodoList\\TodoList.csproj",
+      "projectPath": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\TodoList.csproj",
       "packagesPath": "C:\\Users\\tomas\\.nuget\\packages\\",
-      "outputPath": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\TodoList\\obj\\",
+      "outputPath": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\tomas\\AppData\\Roaming\\NuGet\\NuGet.Config",

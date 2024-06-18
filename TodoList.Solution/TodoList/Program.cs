@@ -1,6 +1,3 @@
-using FormManager.Services.Services.DataAccessLayer;
-using FormManager.Services.Services.DataAccessLayer.Implementation;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -12,6 +9,8 @@ using TodoList.Entities.Task;
 using TodoList.Entities.UserEntity;
 using TodoList.Services.Authentication;
 using TodoList.Services.Authentication.Implementation;
+using TodoList.Services.DataAccessLayer;
+using TodoList.Services.DataAccessLayer.Implementation;
 using TodoList.Services.TaskList;
 using TodoList.Services.TaskList.Implementation;
 using TodoList.Services.Users;

@@ -1,26 +1,62 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\",
+  "WorkspaceRootPath": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|f:\\programacion\\.net\\todolist.solution\\todolist\\controllers\\tasklistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\controllers\\tasklistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|f:\\programacion\\.net\\todolist.solution\\todolist\\services\\user\\implementation\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\services\\user\\implementation\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|f:\\programacion\\.net\\todolist.solution\\todolist\\services\\authentication\\implementation\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\services\\authentication\\implementation\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|f:\\programacion\\.net\\todolist.solution\\todolist\\utils\\encrypt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\utils\\encrypt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\utils\\encrypt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|f:\\programacion\\.net\\todolist.solution\\todolist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\controllers\\tasklistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\controllers\\tasklistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\services\\user\\implementation\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\services\\user\\implementation\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\models\\taskmodels\\taskresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\models\\taskmodels\\taskresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\models\\taskmodels\\taskrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\models\\taskmodels\\taskrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\models\\authentication\\accessrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\models\\authentication\\accessrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\entities\\user\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\entities\\user\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\entities\\task\\taskentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\entities\\task\\taskentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\services\\tasklist\\implementation\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\services\\tasklist\\implementation\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\services\\dataaccesslayer\\implementation\\genericservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\services\\dataaccesslayer\\implementation\\genericservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\services\\dataaccesslayer\\igenericdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\services\\dataaccesslayer\\igenericdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\services\\dataaccesslayer\\implementation\\genericdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\services\\dataaccesslayer\\implementation\\genericdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|s:\\programacion\\todolist-net\\todolist.solution\\todolist\\services\\dataaccesslayer\\igenericservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD19915B-EC29-43CB-9301-7AAE37E29FAA}|TodoList\\TodoList.csproj|solutionrelative:todolist\\services\\dataaccesslayer\\igenericservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,20 +66,190 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "Program.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\TodoList\\Program.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Program.cs",
               "RelativeDocumentMoniker": "TodoList\\Program.cs",
-              "ToolTip": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\TodoList\\Program.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Program.cs",
               "RelativeToolTip": "TodoList\\Program.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAACIAAAA3AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-14T23:57:43.911Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Encrypt.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Utils\\Encrypt.cs",
+              "RelativeDocumentMoniker": "TodoList\\Utils\\Encrypt.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Utils\\Encrypt.cs",
+              "RelativeToolTip": "TodoList\\Utils\\Encrypt.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T15:08:21.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TaskListsController.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Controllers\\TaskListsController.cs",
+              "RelativeDocumentMoniker": "TodoList\\Controllers\\TaskListsController.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Controllers\\TaskListsController.cs",
+              "RelativeToolTip": "TodoList\\Controllers\\TaskListsController.cs",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAywFoAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T15:05:13.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TaskRequest.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Models\\TaskModels\\TaskRequest.cs",
+              "RelativeDocumentMoniker": "TodoList\\Models\\TaskModels\\TaskRequest.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Models\\TaskModels\\TaskRequest.cs",
+              "RelativeToolTip": "TodoList\\Models\\TaskModels\\TaskRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T15:03:52.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AccessRequest.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Models\\Authentication\\AccessRequest.cs",
+              "RelativeDocumentMoniker": "TodoList\\Models\\Authentication\\AccessRequest.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Models\\Authentication\\AccessRequest.cs",
+              "RelativeToolTip": "TodoList\\Models\\Authentication\\AccessRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T15:02:44.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Entities\\User\\User.cs",
+              "RelativeDocumentMoniker": "TodoList\\Entities\\User\\User.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Entities\\User\\User.cs",
+              "RelativeToolTip": "TodoList\\Entities\\User\\User.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAQwA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T15:02:04.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TaskEntity.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Entities\\Task\\TaskEntity.cs",
+              "RelativeDocumentMoniker": "TodoList\\Entities\\Task\\TaskEntity.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Entities\\Task\\TaskEntity.cs",
+              "RelativeToolTip": "TodoList\\Entities\\Task\\TaskEntity.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAswBcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T15:00:19.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TaskResponse.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Models\\TaskModels\\TaskResponse.cs",
+              "RelativeDocumentMoniker": "TodoList\\Models\\TaskModels\\TaskResponse.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Models\\TaskModels\\TaskResponse.cs",
+              "RelativeToolTip": "TodoList\\Models\\TaskModels\\TaskResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T15:00:09.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Services\\User\\Implementation\\UserService.cs",
+              "RelativeDocumentMoniker": "TodoList\\Services\\User\\Implementation\\UserService.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Services\\User\\Implementation\\UserService.cs",
+              "RelativeToolTip": "TodoList\\Services\\User\\Implementation\\UserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAoAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T15:00:01.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TaskService.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Services\\TaskList\\Implementation\\TaskService.cs",
+              "RelativeDocumentMoniker": "TodoList\\Services\\TaskList\\Implementation\\TaskService.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Services\\TaskList\\Implementation\\TaskService.cs",
+              "RelativeToolTip": "TodoList\\Services\\TaskList\\Implementation\\TaskService.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAswAcAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T14:59:54.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "GenericDao.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Services\\DataAccessLayer\\Implementation\\GenericDao.cs",
+              "RelativeDocumentMoniker": "TodoList\\Services\\DataAccessLayer\\Implementation\\GenericDao.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Services\\DataAccessLayer\\Implementation\\GenericDao.cs",
+              "RelativeToolTip": "TodoList\\Services\\DataAccessLayer\\Implementation\\GenericDao.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T14:57:32.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GenericService.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Services\\DataAccessLayer\\Implementation\\GenericService.cs",
+              "RelativeDocumentMoniker": "TodoList\\Services\\DataAccessLayer\\Implementation\\GenericService.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Services\\DataAccessLayer\\Implementation\\GenericService.cs",
+              "RelativeToolTip": "TodoList\\Services\\DataAccessLayer\\Implementation\\GenericService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T14:57:23.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IGenericDao.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Services\\DataAccessLayer\\IGenericDao.cs",
+              "RelativeDocumentMoniker": "TodoList\\Services\\DataAccessLayer\\IGenericDao.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Services\\DataAccessLayer\\IGenericDao.cs",
+              "RelativeToolTip": "TodoList\\Services\\DataAccessLayer\\IGenericDao.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T14:57:18.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IGenericService.cs",
+              "DocumentMoniker": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Services\\DataAccessLayer\\IGenericService.cs",
+              "RelativeDocumentMoniker": "TodoList\\Services\\DataAccessLayer\\IGenericService.cs",
+              "ToolTip": "S:\\PROGRAMACION\\ToDoList-Net\\TodoList.Solution\\TodoList\\Services\\DataAccessLayer\\IGenericService.cs",
+              "RelativeToolTip": "TodoList\\Services\\DataAccessLayer\\IGenericService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T14:49:26.394Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -72,55 +278,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TaskListsController.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\TodoList\\Controllers\\TaskListsController.cs",
-              "RelativeDocumentMoniker": "TodoList\\Controllers\\TaskListsController.cs",
-              "ToolTip": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\TodoList\\Controllers\\TaskListsController.cs",
-              "RelativeToolTip": "TodoList\\Controllers\\TaskListsController.cs",
-              "ViewState": "AQIAAFMAAAAAAAAAAAAAwGUAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T21:51:24.325Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\TodoList\\Services\\User\\Implementation\\UserService.cs",
-              "RelativeDocumentMoniker": "TodoList\\Services\\User\\Implementation\\UserService.cs",
-              "ToolTip": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\TodoList\\Services\\User\\Implementation\\UserService.cs",
-              "RelativeToolTip": "TodoList\\Services\\User\\Implementation\\UserService.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAswA0AAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T20:41:14.245Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthenticationService.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\TodoList\\Services\\Authentication\\Implementation\\AuthenticationService.cs",
-              "RelativeDocumentMoniker": "TodoList\\Services\\Authentication\\Implementation\\AuthenticationService.cs",
-              "ToolTip": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\TodoList\\Services\\Authentication\\Implementation\\AuthenticationService.cs",
-              "RelativeToolTip": "TodoList\\Services\\Authentication\\Implementation\\AuthenticationService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T20:40:52.076Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Encrypt.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\TodoList\\Utils\\Encrypt.cs",
-              "RelativeDocumentMoniker": "TodoList\\Utils\\Encrypt.cs",
-              "ToolTip": "F:\\PROGRAMACION\\.Net\\TodoList.Solution\\TodoList\\Utils\\Encrypt.cs",
-              "RelativeToolTip": "TodoList\\Utils\\Encrypt.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAYwDgAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-14T23:40:05.678Z"
             }
           ]
         }
