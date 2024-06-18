@@ -1,10 +1,10 @@
 # ToDoList REST API | React + .Net
 
-Este proyecto es una aplicación web que proporciona funcionalidades básicas para la gestión de listas de tareas y usuarios, con un enfoque en la seguridad a través de la encriptacion de datos y el uso de tokens. A continuación se detallan las principales características y tecnologías utilizadas.
+Este proyecto es una aplicación web que proporciona funcionalidades básicas para la gestión de listas de tareas y usuarios, con un enfoque en la seguridad a través de la encriptacion de contraseñas y el uso de tokens. A continuación se detallan las principales características y tecnologías utilizadas.
 
 ## Características principales
 
-- **CRUD de Listas de Tareas:** La aplicación permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre las listas de tareas, lo que permite a los usuarios gestionar sus actividades de manera eficiente.
+- **CRUD de Listas de Tareas:** La aplicación permite realizar operaciones CRUD (Create. Read. Update, Delete) sobre las listas de tareas.
 
 - **Autenticación de Usuarios:** La aplicación implementa un sistema de autenticación de usuarios, utilizando un algoritmo de encriptación(SHA-256) para las contraseñas y tokens JWT para la comunicacion con el cliente, lo que garantiza la seguridad de las operaciones y protege los datos sensibles.
 
